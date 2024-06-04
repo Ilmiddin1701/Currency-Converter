@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonArrayRequest
@@ -23,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var rvAdapter: RvAdapter
     private lateinit var list: ArrayList<Courses>
     private lateinit var requestQueue: RequestQueue
+    private var ccy = ""
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +65,7 @@ class MainActivity : AppCompatActivity() {
                             tvDate1.text = list[position].Date
                             tvRN1.text = "1 ${list[position].Ccy} = ${list[position].Rate} so'm"
                             to = list[position].Rate.toFloat()
+                            ccy = list[position].Ccy
                             tvName1.text = "${list[position].CcyNm_UZ} (${list[position].Ccy})"
                         }
                         override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -71,14 +75,24 @@ class MainActivity : AppCompatActivity() {
                             val c = from / to
                             val result = (c * edtAmount.text.toString().toFloat())
                             tvResult.text = "%.3f".format(result)
+                            tvResult.append("  $ccy")
                         } else {
                             Toast.makeText(this@MainActivity, "Enter the amount!", Toast.LENGTH_SHORT).show()
                         }
+                    }
+                    edtAmount.addTextChangedListener { tvResult.text = "" }
+                    show.setOnClickListener {
+                        showKeyboard(edtAmount)
                     }
                 }
             }) {
                 Toast.makeText(this, "No Internet connection. Please try again!", Toast.LENGTH_SHORT).show()
             }
         requestQueue.add(jsonArrayRequest)
+    }
+    private fun showKeyboard(view: View) {
+        view.requestFocus()
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
     }
 }
