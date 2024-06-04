@@ -51,7 +51,8 @@
                     android:paddingEnd="5dp"
                     android:textColor="@color/black"
                     android:textColorHint="#757575"
-                    tools:ignore="RtlSymmetry,SpeakableTextPresentCheck" />
+                    tools:ignore="RtlSymmetry,SpeakableTextPresentCheck"
+                    android:importantForAutofill="no" />
             </HorizontalScrollView>
 
             <Spinner

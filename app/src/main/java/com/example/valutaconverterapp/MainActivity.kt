@@ -8,7 +8,6 @@ import android.widget.AdapterView
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.RequestQueue
-import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 import com.example.valutaconverterapp.Adapters.RvAdapter
@@ -18,7 +17,6 @@ import com.example.valutaconverterapp.Models.Spinner
 import com.example.valutaconverterapp.databinding.ActivityMainBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import org.json.JSONArray
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
