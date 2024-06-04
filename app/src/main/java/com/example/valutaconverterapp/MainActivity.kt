@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var rvAdapter: RvAdapter
     private lateinit var list: ArrayList<Courses>
     private lateinit var requestQueue: RequestQueue
-    var p = 1
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +37,6 @@ class MainActivity : AppCompatActivity() {
                 val str = response.toString()
                 val type = object : TypeToken<ArrayList<Courses>>() {}.type
                 list = Gson().fromJson(str, type)
-                list.add(Courses(0, "Salom", "UZS", "UZS", "UZS", "UZS", "UZS", "1000", "1000", "1", list[1].Date))
                 rvAdapter = RvAdapter(list)
                 binding.rv.adapter = rvAdapter
                 val spinnerList = ArrayList<Spinner>()
@@ -52,15 +50,10 @@ class MainActivity : AppCompatActivity() {
                     spinnerFrom.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                         @SuppressLint("SetTextI18n")
                         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                            if (list[position].id != 0){
-                                tvDate.text = list[position].Date
-                                tvRN.text = "1 ${list[position].Ccy} = ${list[position].Rate} so'm"
-                                from = list[position].Rate.toFloat()
-                                tvName.text = "${list[position].CcyNm_UZ} (${list[position].Ccy})"
-                            } else {
-                                p = list[position].id
-                                tvName.text = "${list[position].CcyNm_UZ} (${list[position].Ccy})"
-                            }
+                            tvDate.text = list[position].Date
+                            tvRN.text = "1 ${list[position].Ccy} = ${list[position].Rate} so'm"
+                            from = list[position].Rate.toFloat()
+                            tvName.text = "${list[position].CcyNm_UZ} (${list[position].Ccy})"
                         }
                         override fun onNothingSelected(parent: AdapterView<*>?) {}
                     }
@@ -77,11 +70,9 @@ class MainActivity : AppCompatActivity() {
                     }
                     btnConvert.setOnClickListener {
                         if (edtAmount.text.isNotEmpty()) {
-                            if (p != 0){
-                                val c = from / to
-                                val result = (c * edtAmount.text.toString().toFloat())
-                                tvResult.text = "%.3f".format(result)
-                            }
+                            val c = from / to
+                            val result = (c * edtAmount.text.toString().toFloat())
+                            tvResult.text = "%.3f".format(result)
                         } else {
                             Toast.makeText(this@MainActivity, "Enter the amount!", Toast.LENGTH_SHORT).show()
                         }
