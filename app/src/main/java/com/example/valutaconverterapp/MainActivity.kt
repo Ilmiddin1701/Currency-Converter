@@ -138,7 +138,7 @@ class MainActivity : AppCompatActivity() {
                                 } else {
                                     Toast.makeText(
                                         this@MainActivity,
-                                        "Enter the amount!",
+                                        "Miqdorni kiriting!",
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
