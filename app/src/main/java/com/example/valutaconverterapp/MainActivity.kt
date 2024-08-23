@@ -143,7 +143,7 @@ class MainActivity : AppCompatActivity() {
                                     ).show()
                                 }
                             } catch (e:Exception) {
-                                Toast.makeText(this@MainActivity, "Something went wrong!", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@MainActivity, "Nimadir xato ketdi!", Toast.LENGTH_SHORT).show()
                             }
                         }
                         edtAmount.addTextChangedListener { tvResult.text = "" }
