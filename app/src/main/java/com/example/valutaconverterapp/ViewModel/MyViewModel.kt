@@ -30,7 +30,7 @@ class MyViewModel() : ViewModel() {
                             liveCourses.postValue(Resource.success(list))
                         }
                     } catch (e: Exception) {
-                        liveCourses.postValue(Resource.error("Something went wrong!"))
+                        liveCourses.postValue(Resource.error("Nimadir xato ketdi!"))
                     }
                 }
             }
