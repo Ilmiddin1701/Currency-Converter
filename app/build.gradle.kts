@@ -49,4 +49,17 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation ("com.google.code.gson:gson:2.10.1")
+
+    //noinspection UseTomlInstead
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    //noinspection UseTomlInstead
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+
+    //shimmer effect
+    //noinspection UseTomlInstead
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
+
+    //ViewModel lifecycle
+    //noinspection UseTomlInstead
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
 }
