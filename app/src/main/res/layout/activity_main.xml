@@ -26,7 +26,7 @@
         android:visibility="gone"
         android:gravity="center"
         android:layout_gravity="center_horizontal"
-        android:text="No internet connection! Connecting the device \nto the Internet will cause the application to work properly."
+        android:text="Internet aloqasi yo'q! Qurilmani internetga \nulash ilovaning to'g'ri ishlashiga sabab bo'ladi."
         android:layout_marginTop="15dp"
         android:textColor="#FF0000" />
 
